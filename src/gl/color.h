@@ -18,9 +18,10 @@ namespace color
         void setB(unsigned char b);
 
     private:
+        unsigned char clamp(unsigned char value);
         unsigned char r, g, b;
     };
 }
 
-// reminders:
+// notes:
 // |1| an unsigned char is a data type that represents and integer value between 0 and 255, just perfect!
