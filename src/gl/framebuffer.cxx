@@ -1,9 +1,9 @@
 // date: 10/07/2023
 // author: samuel chamalé
 
-#include "renderer.h"
+#include "framebuffer.h"
 
-namespace renderer
+namespace framebuffer
 {
     Framebuffer::Framebuffer(int width, int height)
         : width(width), height(height), data(width * height, clearColor) {}
@@ -13,12 +13,12 @@ namespace renderer
 
     int Framebuffer::getHeight() const { return height; }
 
-    color::Color Framebuffer::getPixel(const Pixel &p) const
+    color::Color Framebuffer::getPixel(const pixel::Pixel &p) const
     {
         return data[p.y * width + p.x];
     }
 
-    void Framebuffer::setPixel(const Pixel &p)
+    void Framebuffer::setPixel(const pixel::Pixel &p)
     {
         if (isInside(p))
             data[p.y * width + p.x] = currentColor;
@@ -30,7 +30,7 @@ namespace renderer
         // TODO : use memset instead
     }
 
-    bool Framebuffer::isInside(const Pixel &p) const
+    bool Framebuffer::isInside(const pixel::Pixel &p) const
     {
         return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height; // Check if the pixel is inside the framebuffer
     }
