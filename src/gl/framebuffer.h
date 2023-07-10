@@ -14,7 +14,7 @@ namespace framebuffer
         int getWidth() const;
         int getHeight() const;
         color::Color getPixel(int x, int y) const;
-        void setPixel(int x, int y, const color::Color &c);
+        void setPixel(int x, int y);
         void clear();
 
     private:
@@ -24,4 +24,5 @@ namespace framebuffer
 
     extern Framebuffer framebuffer;
     extern color::Color clearColor;
+    extern color::Color currentColor;
 }

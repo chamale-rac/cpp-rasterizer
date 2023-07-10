@@ -18,9 +18,9 @@ namespace framebuffer
         return data[y * width + x];
     }
 
-    void Framebuffer::setPixel(int x, int y, const color::Color &c)
+    void Framebuffer::setPixel(int x, int y)
     {
-        data[y * width + x] = c;
+        data[y * width + x] = currentColor;
     }
 
     void Framebuffer::clear()
@@ -32,6 +32,7 @@ namespace framebuffer
     // some global default variables, to avoid passing them around
     Framebuffer framebuffer(800, 600);
     color::Color clearColor(0, 0, 0);
+    color::Color currentColor(255, 255, 255);
 }
 
 // notes:
