@@ -8,7 +8,7 @@ namespace pixel
     class Pixel
     {
     public:
-        int x, y;
+        int x, y; // TODO: consider making these private and adding getters and setters
         Pixel(int x = 0, int y = 0);
     };
 }
