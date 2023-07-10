@@ -19,6 +19,9 @@ namespace color
         void setB(unsigned char b);
         friend std::ostream &operator<<(std::ostream &os, const Color &c); // |2| friend keyword
         friend Color operator+(const Color &lhs, const Color &rhs);        // |3| operator overloading
+        friend Color operator*(const Color &c, float f);
+        friend Color operator*(float f, const Color &c);
+
     private:
         unsigned char clamp(unsigned char value);
         unsigned char r, g, b;

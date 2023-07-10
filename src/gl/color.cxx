@@ -42,13 +42,26 @@ namespace color
         unsigned char b = lhs.b + rhs.b;
         return Color(r, g, b);
     }
+
+    Color operator*(const Color &c, float f)
+    {
+        unsigned char r = static_cast<unsigned char>(c.r * f);
+        unsigned char g = static_cast<unsigned char>(c.g * f);
+        unsigned char b = static_cast<unsigned char>(c.b * f);
+        return Color(r, g, b);
+    }
+
+    Color operator*(float f, const Color &c)
+    {
+        return c * f; // we have already defined c * f, so we can use it here
+    }
 }
 
 // notes:
 // |1| it may looks like clamp function is not necessary, but even we are using unsigned char
 // it is possible to set a value greater than 255 or less than 0, so we need to clamp it.
 // without clamping if we pass a value greater than 255 it will wrap around an start from 0 and so on.
-// |2| referencer: https://en.cppreference.com/w/cpp/language/operator_other
+// |2| reference: https://en.cppreference.com/w/cpp/language/operator_other
 // |3| this cool cast make possible to print the color object in a custom format using standard output stream.
 // ex: color::Color red(255, 0, 0); std::cout << "Red: " << red << std::endl;
 // result: Red: Color(255, 0, 0)
