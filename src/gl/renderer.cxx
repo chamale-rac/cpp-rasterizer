@@ -20,13 +20,19 @@ namespace renderer
 
     void Framebuffer::setPixel(const Pixel &p)
     {
-        data[p.y * width + p.x] = currentColor;
+        if (isInside(p))
+            data[p.y * width + p.x] = currentColor;
     }
 
     void Framebuffer::clear()
     {
         std::fill(data.begin(), data.end(), clearColor); // |1| std::fill
         // TODO : use memset instead
+    }
+
+    bool Framebuffer::isInside(const Pixel &p) const
+    {
+        return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height; // Check if the pixel is inside the framebuffer
     }
 
     // some global default variables, to avoid passing them around

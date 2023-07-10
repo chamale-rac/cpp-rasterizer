@@ -26,6 +26,7 @@ namespace renderer
     private:
         int width, height;
         std::vector<color::Color> data;
+        bool isInside(const Pixel &p) const;
     };
 
     extern color::Color clearColor;
