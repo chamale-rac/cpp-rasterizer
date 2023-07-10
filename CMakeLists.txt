@@ -7,19 +7,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 configure_file(RasterizerConfig.h.in src/RasterizerConfig.h) # generate config file
 
+# adding library step 1
 # add the libraries
+add_subdirectory(src/gl)
 add_subdirectory(src/MathFunctions) 
 
 # add the executable
 add_executable(${PROJECT_NAME} src/main.cxx)
 
+# adding library step 2
 # link the libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC MathFunctions)
+target_link_libraries(${PROJECT_NAME} PUBLIC gl)
 
+# adding library step 3
 # add the binary tree to the search path for include files
 target_include_directories(${PROJECT_NAME} PUBLIC
                            "${PROJECT_BINARY_DIR}"
-                           "${PROJECT_SOURCE_DIR}/src/MathFunctions")
+                           "${PROJECT_SOURCE_DIR}/src/MathFunctions
+                           ${PROJECT_SOURCE_DIR}/src/gl")
 
 
 # | building tips:

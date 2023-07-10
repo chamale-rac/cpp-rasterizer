@@ -5,6 +5,7 @@
 
 #include "RasterizerConfig.h"
 #include "MathFunctions.h"
+#include "gl.h"
 
 int main(int argc, char *argv[])
 {
