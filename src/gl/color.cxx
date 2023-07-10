@@ -53,7 +53,7 @@ namespace color
 
     Color operator*(float f, const Color &c)
     {
-        return c * f; // we have already defined c * f, so we can use it here
+        return c * f; // we have already defined c * f, so we can use it here, cool!
     }
 }
 
