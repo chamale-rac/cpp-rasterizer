@@ -1,4 +1,6 @@
-// framebuffer.h
+// date: 10/07/2023
+// author: samuel chamalé
+
 #pragma once
 #include "color.h"
 #include <vector>
