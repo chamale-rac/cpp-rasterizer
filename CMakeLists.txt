@@ -24,8 +24,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC gl)
 # add the binary tree to the search path for include files
 target_include_directories(${PROJECT_NAME} PUBLIC
                            "${PROJECT_BINARY_DIR}"
-                           "${PROJECT_SOURCE_DIR}/src/MathFunctions
-                           ${PROJECT_SOURCE_DIR}/src/gl")
+                           "${PROJECT_SOURCE_DIR}/src/MathFunctions"
+                           "${PROJECT_SOURCE_DIR}/src/gl")
 
 
 # | building tips:
