@@ -5,16 +5,22 @@
 #include "color.h"
 #include <vector>
 
-namespace framebuffer
+namespace renderer
 {
+    struct Pixel
+    {
+        int x, y;
+        Pixel(int x = 0, int y = 0) : x(x), y(y) {}
+    };
+
     class Framebuffer
     {
     public:
         Framebuffer(int width, int height);
         int getWidth() const;
         int getHeight() const;
-        color::Color getPixel(int x, int y) const;
-        void setPixel(int x, int y);
+        color::Color getPixel(const Pixel &p) const;
+        void setPixel(const Pixel &p);
         void clear();
 
     private:
@@ -22,7 +28,6 @@ namespace framebuffer
         std::vector<color::Color> data;
     };
 
-    extern Framebuffer framebuffer;
     extern color::Color clearColor;
     extern color::Color currentColor;
 }

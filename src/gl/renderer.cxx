@@ -1,9 +1,9 @@
 // date: 10/07/2023
 // author: samuel chamalé
 
-#include "framebuffer.h"
+#include "renderer.h"
 
-namespace framebuffer
+namespace renderer
 {
     Framebuffer::Framebuffer(int width, int height)
         : width(width), height(height), data(width * height, clearColor) {}
@@ -13,14 +13,14 @@ namespace framebuffer
 
     int Framebuffer::getHeight() const { return height; }
 
-    color::Color Framebuffer::getPixel(int x, int y) const
+    color::Color Framebuffer::getPixel(const Pixel &p) const
     {
-        return data[y * width + x];
+        return data[p.y * width + p.x];
     }
 
-    void Framebuffer::setPixel(int x, int y)
+    void Framebuffer::setPixel(const Pixel &p)
     {
-        data[y * width + x] = currentColor;
+        data[p.y * width + p.x] = currentColor;
     }
 
     void Framebuffer::clear()
@@ -30,7 +30,6 @@ namespace framebuffer
     }
 
     // some global default variables, to avoid passing them around
-    Framebuffer framebuffer(800, 600);
     color::Color clearColor(0, 0, 0);
     color::Color currentColor(255, 255, 255);
 }
