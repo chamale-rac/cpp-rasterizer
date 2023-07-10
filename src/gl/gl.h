@@ -1,8 +1,8 @@
 #pragma once
 
+#include "color.h"
 #include "pixel.h"
 #include "framebuffer.h"
-#include "color.h"
 
 namespace gl
 {

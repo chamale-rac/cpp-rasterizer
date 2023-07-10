@@ -27,7 +27,6 @@ namespace color
         unsigned char r, g, b;
     };
 }
-
 // notes:
 // |1| an unsigned char is a data type that represents and integer value between 0 and 255, just perfect!
 // |2| friend is a keyword that allows a function or class to access private members of another class.

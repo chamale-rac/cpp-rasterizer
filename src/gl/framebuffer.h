@@ -19,14 +19,19 @@ namespace framebuffer
         void clear();
         void renderBuffer() const;
 
+        void setClearColor(const color::Color &cc) { clearColor = cc; }
+        void setCurrentColor(const color::Color &cc) { currentColor = cc; }
+        const color::Color &getClearColor() const { return clearColor; }
+        const color::Color &getCurrentColor() const { return currentColor; }
+
     private:
         int width, height;
+        color::Color clearColor;
+        color::Color currentColor;
         std::vector<color::Color> data; // |1| std::vector
         bool isInside(const pixel::Pixel &p) const;
     };
 
-    extern color::Color clearColor;
-    extern color::Color currentColor;
 }
 
 // notes:

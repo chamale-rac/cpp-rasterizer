@@ -5,7 +5,7 @@
 
 namespace color
 {
-    Color::Color() : r(0), g(0), b(0) {} // default constructor
+    Color::Color() : r(0), g(0), b(0) {}
 
     Color::Color(unsigned char r, unsigned char g, unsigned char b)
         : r(clamp(r)), g(clamp(g)), b(clamp(b)) {}
@@ -56,7 +56,6 @@ namespace color
         return c * f; // we have already defined c * f, so we can use it here, cool!
     }
 }
-
 // notes:
 // |1| it may looks like clamp function is not necessary, but even we are using unsigned char
 // it is possible to set a value greater than 255 or less than 0, so we need to clamp it.

@@ -104,7 +104,7 @@ namespace framebuffer
 
 // notes:
 // |1| std::fill fills a range of elements in a container with a given value
-// |2| data is a vector of color::Color, so it is a vector of colors,
+// |2| data is a vector of Color, so it is a vector of colors,
 // and it is initialized with a vector of size width * height, filled with clearColor
 // this is a constructor initialization list, it is used to initialize member variables of a class
 // |3| this enhance the image processing, cause multiple hardware graphics accelerators works most efficiently on data aligned to a multiple of 4 bytes.
