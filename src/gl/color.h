@@ -18,7 +18,7 @@ namespace color
         void setG(unsigned char g);
         void setB(unsigned char b);
         friend std::ostream &operator<<(std::ostream &os, const Color &c); // |2| friend keyword
-
+        friend Color operator+(const Color &lhs, const Color &rhs);        // |3| operator overloading
     private:
         unsigned char clamp(unsigned char value);
         unsigned char r, g, b;
@@ -29,3 +29,4 @@ namespace color
 // |1| an unsigned char is a data type that represents and integer value between 0 and 255, just perfect!
 // |2| friend is a keyword that allows a function or class to access private members of another class.
 // it can access the private and protected members of the class as if they were its own members.
+// |3| operator overloading is a feature that allows us to redefine the behavior of an operator

@@ -33,14 +33,23 @@ namespace color
            << static_cast<int>(c.g) << ", "
            << static_cast<int>(c.b) << ")";
         return os;
-    } // |3| how to print a color object
+    } // |3| reminder -> how to print a color object
+
+    Color operator+(const Color &lhs, const Color &rhs) // reminder -> lhs: left hand side, rhs: right hand side
+    {
+        unsigned char r = lhs.r + rhs.r;
+        unsigned char g = lhs.g + rhs.g;
+        unsigned char b = lhs.b + rhs.b;
+        return Color(r, g, b);
+    }
 }
 
 // notes:
 // |1| it may looks like clamp function is not necessary, but even we are using unsigned char
 // it is possible to set a value greater than 255 or less than 0, so we need to clamp it.
 // without clamping if we pass a value greater than 255 it will wrap around an start from 0 and so on.
-// |2| link: https://en.cppreference.com/w/cpp/language/operator_other
+// |2| referencer: https://en.cppreference.com/w/cpp/language/operator_other
 // |3| this cool cast make possible to print the color object in a custom format using standard output stream.
 // ex: color::Color red(255, 0, 0); std::cout << "Red: " << red << std::endl;
 // result: Red: Color(255, 0, 0)
+// reference: https://cplusplus.com/forum/beginner/198631/
