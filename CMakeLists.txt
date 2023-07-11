@@ -10,25 +10,24 @@ configure_file(RasterizerConfig.h.in src/RasterizerConfig.h) # generate config f
 # adding library step 1
 # add the libraries
 
-include_directories(src/gl)
-link_directories(src/gl)
 add_subdirectory(src/gl)
-
 add_subdirectory(src/MathFunctions) 
+add_subdirectory(src/draw)
 
 # add the executable
 add_executable(${PROJECT_NAME} src/main.cxx)
 
 # adding library step 2
 # link the libraries
-target_link_libraries(${PROJECT_NAME} PUBLIC MathFunctions gl)
+target_link_libraries(${PROJECT_NAME} PUBLIC MathFunctions gl draw)
 
 # adding library step 3
 # add the binary tree to the search path for include files
 target_include_directories(${PROJECT_NAME} PUBLIC
                            "${PROJECT_BINARY_DIR}"
                            "${PROJECT_SOURCE_DIR}/src/MathFunctions"
-                           "${PROJECT_SOURCE_DIR}/src/gl")
+                           "${PROJECT_SOURCE_DIR}/src/gl"
+                           "${PROJECT_SOURCE_DIR}/src/draw")
 
 
 # | building tips:
