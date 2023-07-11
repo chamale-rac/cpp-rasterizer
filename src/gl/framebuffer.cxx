@@ -5,6 +5,7 @@
 
 #include <fstream>
 #include <cstdint>
+#include <math.h>
 
 namespace framebuffer
 {
@@ -18,13 +19,13 @@ namespace framebuffer
 
     color::Color Framebuffer::getPixel(const pixel::Pixel &p) const
     {
-        return data[p.y * width + p.x];
+        return data[std::floor(p.y) * width + std::floor(p.x)];
     }
 
     void Framebuffer::setPixel(const pixel::Pixel &p)
     {
         if (isInside(p))
-            data[p.y * width + p.x] = currentColor;
+            data[std::floor(p.y) * width + std::floor(p.x)] = currentColor;
     }
 
     void Framebuffer::clear()
@@ -96,7 +97,7 @@ namespace framebuffer
         out.close();
     }
 
-    // some global default variables, to avoid passing them around
+    // some global default variables, to avoid passing them afloor
     // Framebuffer framebuffer(1920, 1080);
     color::Color clearColor(0, 0, 0);
     color::Color currentColor(255, 255, 255);
