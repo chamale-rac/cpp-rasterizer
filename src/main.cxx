@@ -4,7 +4,6 @@
 #include <string>
 
 #include "RasterizerConfig.h"
-#include "MathFunctions.h"
 #include "gl.h"
 
 void render();
