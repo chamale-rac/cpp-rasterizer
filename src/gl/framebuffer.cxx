@@ -23,7 +23,7 @@ namespace framebuffer
     }
 
     // receives: pixel, brightness
-    void Framebuffer::setPixel(const pixel::Pixel &p, const double brightness)
+    void Framebuffer::setPixel(const pixel::Pixel &p, const double brightness = 1.0)
     {
         if (isInside(p))
             data[std::floor(p.y) * width + std::floor(p.x)] = currentColor * brightness;
