@@ -55,11 +55,23 @@ namespace draw
                 gradient = 1.0;
             }
 
+            // handle first endpoint
             int xend = round(p0.x);                        // The x-coordinate of the pixel where the line ends
             double yend = p0.y + gradient * (xend - p0.x); // The y-coordinate of the pixel where the line ends
             double xgap = rfpart(p0.x + 0.5);              // The "weight" of the first pixel (i.e., the amount of the line that passes through the pixel)
             int xpxl1 = xend;                              // The x-coordinate of the first pixel
             int ypxl1 = ipart(yend);                       // The y-coordinate of the first pixel
+
+            if (steep)
+            {
+                fb.setPixel(gl::Pixel(ypxl1, xpxl1), rfpart(yend) * xgap);
+                fb.setPixel(gl::Pixel(ypxl1 + 1, xpxl1), fpart(yend) * xgap);
+            }
+            else
+            {
+                fb.setPixel(gl::Pixel(xpxl1, ypxl1), rfpart(yend) * xgap);
+                fb.setPixel(gl::Pixel(xpxl1, ypxl1 + 1), fpart(yend) * xgap);
+            }
 
             // TODO: pending plot function and color interpolation
         }

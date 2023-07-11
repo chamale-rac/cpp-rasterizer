@@ -22,10 +22,11 @@ namespace framebuffer
         return data[std::floor(p.y) * width + std::floor(p.x)];
     }
 
-    void Framebuffer::setPixel(const pixel::Pixel &p)
+    // receives: pixel, brightness
+    void Framebuffer::setPixel(const pixel::Pixel &p, const double brightness)
     {
         if (isInside(p))
-            data[std::floor(p.y) * width + std::floor(p.x)] = currentColor;
+            data[std::floor(p.y) * width + std::floor(p.x)] = currentColor * brightness;
     }
 
     void Framebuffer::clear()

@@ -15,7 +15,7 @@ namespace framebuffer
         int getWidth() const;
         int getHeight() const;
         color::Color getPixel(const pixel::Pixel &p) const;
-        void setPixel(const pixel::Pixel &p);
+        void setPixel(const pixel::Pixel &p, const double brightness);
         void clear();
         void renderBuffer() const;
 
