@@ -73,7 +73,47 @@ namespace draw
                 fb.setPixel(gl::Pixel(xpxl1, ypxl1 + 1), fpart(yend) * xgap);
             }
 
-            // TODO: pending plot function and color interpolation
+            double intery = yend + gradient; // first y-intersection for the main loop
+
+            // handle second endpoint
+            xend = round(p1.x);
+            yend = p1.y + gradient * (xend - p1.x);
+            xgap = fpart(p1.x + 0.5);
+            int xpxl2 = xend;
+            int ypxl2 = ipart(yend);
+
+            if (steep)
+            {
+                fb.setPixel(gl::Pixel(ypxl2, xpxl2), rfpart(yend) * xgap);
+                fb.setPixel(gl::Pixel(ypxl2 + 1, xpxl2), fpart(yend) * xgap);
+            }
+            else
+            {
+                fb.setPixel(gl::Pixel(xpxl2, ypxl2), rfpart(yend) * xgap);
+                fb.setPixel(gl::Pixel(xpxl2, ypxl2 + 1), fpart(yend) * xgap);
+            }
+            // TODO: return to int the pixel coordinates and remove floor in framebuffer setPixel
+
+            // main loop
+
+            if (steep)
+            {
+                for (int x = xpxl1 + 1; x <= xpxl2 - 1; x++)
+                {
+                    fb.setPixel(gl::Pixel(ipart(intery), x), rfpart(intery));
+                    fb.setPixel(gl::Pixel(ipart(intery) + 1, x), fpart(intery));
+                    intery = intery + gradient;
+                }
+            }
+            else 
+            {
+                for (int x = xpxl1 + 1; x <= xpxl2 - 1; x++)
+                {
+                    fb.setPixel(gl::Pixel(x, ipart(intery)), rfpart(intery));
+                    fb.setPixel(gl::Pixel(x, ipart(intery) + 1), fpart(intery));
+                    intery = intery + gradient;
+                }
+            }
         }
     }
 }
