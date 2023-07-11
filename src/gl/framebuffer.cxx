@@ -5,7 +5,6 @@
 
 #include <fstream>
 #include <cstdint>
-#include <math.h>
 
 namespace framebuffer
 {
@@ -19,14 +18,14 @@ namespace framebuffer
 
     color::Color Framebuffer::getPixel(const pixel::Pixel &p) const
     {
-        return data[std::floor(p.y) * width + std::floor(p.x)];
+        return data[p.y * width + p.x];
     }
 
     // receives: pixel, brightness
     void Framebuffer::setPixel(const pixel::Pixel &p, const double brightness = 1.0)
     {
         if (isInside(p))
-            data[std::floor(p.y) * width + std::floor(p.x)] = currentColor * brightness;
+            data[p.y * width + p.x] = currentColor * brightness;
     }
 
     void Framebuffer::clear()

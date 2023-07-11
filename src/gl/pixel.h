@@ -8,9 +8,9 @@ namespace pixel
     class Pixel
     {
     public:
-        double x, y;
+        int x, y;
         Pixel();
-        Pixel(double x, double y);
+        Pixel(int x, int y);
     };
 }
 // notes:
