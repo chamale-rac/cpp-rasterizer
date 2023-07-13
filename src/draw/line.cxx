@@ -29,7 +29,7 @@ namespace draw
             return 1.0 - fpart(x);
         }
 
-        void line(gl::Framebuffer &fb, gl::Pixel &p0, gl::Pixel &p1, const gl::Color &c)
+        void line(gl::Framebuffer &fb, gl::Pixel &p0, gl::Pixel &p1)
         {
             double x0 = p0.x;
             double y0 = p0.y;

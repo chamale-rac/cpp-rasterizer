@@ -9,17 +9,17 @@ namespace draw
 {
     namespace details
     {
-        void polygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices, const gl::Color &c)
+        void polygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices)
         {
             for (std::size_t i = 0; i < vertices.size(); ++i)
             {
-                line(fb, vertices[i], vertices[(i + 1) % vertices.size()], c);
+                line(fb, vertices[i], vertices[(i + 1) % vertices.size()]);
             }
         }
 
-        void fillPolygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices, const gl::Color &c)
+        void fillPolygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices)
         {
-            // Find the minimum and maximum y-coordinates of the polygon
+            // find the minimum and maximum y-coordinates of the polygon
             int ymin = std::numeric_limits<int>::max();
             int ymax = std::numeric_limits<int>::min();
             for (const auto &v : vertices)
@@ -28,10 +28,10 @@ namespace draw
                 ymax = std::max(ymax, v.y);
             }
 
-            // Loop over each scanline
+            // loop over each scanline
             for (int y = ymin; y <= ymax; ++y)
             {
-                // Find the intersections of the scanline with each edge of the polygon
+                // find the intersections of the scanline with each edge of the polygon
                 std::vector<double> intersections;
                 for (std::size_t i = 0; i < vertices.size(); ++i)
                 {
@@ -44,10 +44,10 @@ namespace draw
                     }
                 }
 
-                // Sort the intersections by x-coordinate
+                // sort the intersections by x-coordinate
                 std::sort(intersections.begin(), intersections.end());
 
-                // Draw horizontal lines between pairs of intersecting edges
+                // draw horizontal lines between pairs of intersecting edges
                 for (std::size_t i = 0; i < intersections.size(); i += 2)
                 {
                     int x1 = std::max(0, static_cast<int>(std::floor(intersections[i])));
