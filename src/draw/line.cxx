@@ -8,7 +8,7 @@ namespace draw
         // integer part of x
         int ipart(double x)
         {
-            return static_cast<int>(std::floor(x));
+            return std::floor(x);
         }
 
         // round x to nearest integer
@@ -20,7 +20,7 @@ namespace draw
         // fractional part of x
         double fpart(double x)
         {
-            return x - std::floor(x);
+            return x - ipart(x);
         }
 
         // 1 - fractional part of x
@@ -31,36 +31,45 @@ namespace draw
 
         void line(gl::Framebuffer &fb, gl::Pixel &p0, gl::Pixel &p1, const gl::Color &c)
         {
+            double x0 = p0.x;
+            double y0 = p0.y;
+            double x1 = p1.x;
+            double y1 = p1.y;
+
             // TODO: Xiaolin Wu's line algorithm |1|
-            bool steep = std::abs(p1.y - p0.y) > std::abs(p1.x - p0.x);
+            bool steep = std::abs(y1 - y0) > std::abs(x1 - x0);
 
             if (steep)
             {
-                std::swap(p0.x, p0.y);
-                std::swap(p1.x, p1.y);
+                std::swap(x0, y0);
+                std::swap(x1, y1);
             }
-            if (p0.x > p1.x)
+            if (x0 > x1)
             {
-                std::swap(p0.x, p1.x);
-                std::swap(p0.y, p1.y);
+                std::swap(x0, x1);
+                std::swap(y0, y1);
             }
 
-            double dx = p1.x - p0.x;
-            double dy = p1.y - p0.y;
+            double dx = x1 - x0;
+            double dy = y1 - y0;
 
-            // TODO investigate about float and double inner workings
-            double gradient = dy / dx; // intensity of the color
-            if (dx == 0.0)             // this means the line is vertical
+            double gradient;
+            if (dx == 0.0)
             {
+                std::cout << "dx == 0" << std::endl;
                 gradient = 1.0;
+            }
+            else
+            {
+                gradient = dy / dx;
             }
 
             // handle first endpoint
-            int xend = round(p0.x);                        // The x-coordinate of the pixel where the line ends
-            double yend = p0.y + gradient * (xend - p0.x); // The y-coordinate of the pixel where the line ends
-            double xgap = rfpart(p0.x + 0.5);              // The "weight" of the first pixel (i.e., the amount of the line that passes through the pixel)
-            int xpxl1 = xend;                              // The x-coordinate of the first pixel
-            int ypxl1 = ipart(yend);                       // The y-coordinate of the first pixel
+            int xend = round(x0);                      // The x-coordinate of the pixel where the line ends
+            double yend = y0 + gradient * (xend - x0); // The y-coordinate of the pixel where the line ends
+            double xgap = rfpart(x0 + 0.5);            // The "weight" of the first pixel (i.e., the amount of the line that passes through the pixel)
+            int xpxl1 = xend;                          // The x-coordinate of the first pixel
+            int ypxl1 = ipart(yend);                   // The y-coordinate of the first pixel
 
             if (steep)
             {
@@ -76,9 +85,9 @@ namespace draw
             double intery = yend + gradient; // first y-intersection for the main loop
 
             // handle second endpoint
-            xend = round(p1.x);
-            yend = p1.y + gradient * (xend - p1.x);
-            xgap = fpart(p1.x + 0.5);
+            xend = round(x1);
+            yend = y1 + gradient * (xend - x1);
+            xgap = fpart(x1 + 0.5);
             int xpxl2 = xend;
             int ypxl2 = ipart(yend);
 

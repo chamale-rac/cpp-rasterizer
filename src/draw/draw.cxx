@@ -14,4 +14,9 @@ namespace draw
     {
         details::polygon(fb, vertices, c);
     }
+
+    void fillPolygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices, const gl::Color &c)
+    {
+        details::fillPolygon(fb, vertices, c);
+    }
 }
