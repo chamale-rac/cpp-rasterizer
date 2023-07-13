@@ -10,7 +10,7 @@ namespace draw
         details::line(fb, p0, p1, c);
     }
 
-    void polygon(gl::Framebuffer &fb, const std::vector<gl::Pixel> &vertices, const gl::Color &c)
+    void polygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices, const gl::Color &c)
     {
         details::polygon(fb, vertices, c);
     }

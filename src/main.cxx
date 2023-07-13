@@ -5,6 +5,7 @@
 
 #include "RasterizerConfig.h"
 #include "gl.h"
+#include "draw.h"
 
 void render();
 
@@ -29,10 +30,24 @@ void render()
     const int HEIGHT = 480;
 
     gl::Color WHITE(255, 255, 255);
+    gl::Color BLACK(0, 0, 0);
     gl::Framebuffer fb(WIDTH, HEIGHT);
 
-    fb.setClearColor(WHITE);
+    gl::Pixel first(1, 1);
+    gl::Pixel second(200, 200);
+    gl::Pixel third(300, 150);
+
+    fb.setClearColor(BLACK);
     fb.clear();
+
+    fb.setCurrentColor(WHITE);
+
+    // draw::line(fb, first, second, WHITE);
+
+    // draw::line(fb, first, third, WHITE);
+
+    std::vector<gl::Pixel> vertices = {first, second, third};
+    draw::polygon(fb, vertices, WHITE);
 
     fb.renderBuffer();
 }

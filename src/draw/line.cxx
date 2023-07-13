@@ -105,7 +105,7 @@ namespace draw
                     intery = intery + gradient;
                 }
             }
-            else 
+            else
             {
                 for (int x = xpxl1 + 1; x <= xpxl2 - 1; x++)
                 {

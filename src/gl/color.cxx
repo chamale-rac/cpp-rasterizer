@@ -43,15 +43,15 @@ namespace color
         return Color(r, g, b);
     }
 
-    Color operator*(const Color &c, float f)
+    Color operator*(const Color &c, double f)
     {
-        unsigned char r = static_cast<unsigned char>(c.r * f);
-        unsigned char g = static_cast<unsigned char>(c.g * f);
-        unsigned char b = static_cast<unsigned char>(c.b * f);
+        unsigned char r = static_cast<int>(c.r * f);
+        unsigned char g = static_cast<int>(c.g * f);
+        unsigned char b = static_cast<int>(c.b * f);
         return Color(r, g, b);
     }
 
-    Color operator*(float f, const Color &c)
+    Color operator*(double f, const Color &c)
     {
         return c * f; // we have already defined c * f, so we can use it here, cool!
     }

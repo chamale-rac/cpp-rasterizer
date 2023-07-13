@@ -25,7 +25,12 @@ namespace framebuffer
     void Framebuffer::setPixel(const pixel::Pixel &p, const double brightness = 1.0)
     {
         if (isInside(p))
+        {
+            // std::cout << "cur:" << currentColor << std::endl;
+            color::Color newColor = currentColor * brightness;
+            // std::cout << "mul:" << newColor << std::endl;
             data[p.y * width + p.x] = currentColor * brightness;
+        }
     }
 
     void Framebuffer::clear()

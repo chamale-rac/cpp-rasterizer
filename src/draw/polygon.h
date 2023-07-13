@@ -5,6 +5,6 @@ namespace draw
 {
     namespace details
     {
-        void polygon(gl::Framebuffer &fb, const std::vector<gl::Pixel> &vertices, const gl::Color &c);
+        void polygon(gl::Framebuffer &fb, std::vector<gl::Pixel> &vertices, const gl::Color &c);
     } // namespace polygon
 }
