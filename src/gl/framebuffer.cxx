@@ -26,10 +26,13 @@ namespace framebuffer
     {
         if (isInside(p))
         {
-            // std::cout << "cur:" << currentColor << std::endl;
-            color::Color newColor = currentColor * brightness;
-            // std::cout << "mul:" << newColor << std::endl;
-            data[p.y * width + p.x] = currentColor * brightness;
+            // TODO: consider level of brightness to desire to include or not currentColor
+            // TODO: consider which is the correct formula
+            // TODO: consider a function to get the context color, it means the color in average of the adjacent pixels
+            // data[(height - p.y) * width + p.x] = (data[(height - p.y) * width + p.x] + currentColor) * brightness;
+            // TODO consider to return to just currentColor * brightness
+            // TODO consider check the case the brightness is 0.0, also the case when the clearColor is equal to the background.
+            data[(height - p.y) * width + p.x] = currentColor * brightness;
         }
     }
 
