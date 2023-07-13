@@ -90,20 +90,20 @@ void render()
         gl::Pixel(739, 170)};
 
     fb.setCurrentColor(PINK);
-    draw::fillPolygon(fb, poly_0, WHITE);
-    draw::fillPolygon(fb, poly_1, WHITE);
-    draw::fillPolygon(fb, poly_2, WHITE);
-    draw::fillPolygon(fb, poly_3, WHITE);
+    draw::fillPolygon(fb, poly_0);
+    draw::fillPolygon(fb, poly_1);
+    draw::fillPolygon(fb, poly_2);
+    draw::fillPolygon(fb, poly_3);
 
     fb.setCurrentColor(WHITE);
-    draw::polygon(fb, poly_0, WHITE);
-    draw::polygon(fb, poly_1, WHITE);
-    draw::polygon(fb, poly_2, WHITE);
-    draw::polygon(fb, poly_3, WHITE);
-    draw::polygon(fb, poly_4, WHITE);
+    draw::polygon(fb, poly_0);
+    draw::polygon(fb, poly_1);
+    draw::polygon(fb, poly_2);
+    draw::polygon(fb, poly_3);
+    draw::polygon(fb, poly_4);
 
     fb.setCurrentColor(BLACK);
-    draw::fillPolygon(fb, poly_4, WHITE);
+    draw::fillPolygon(fb, poly_4);
 
     // draw::polygon(fb, poly_2, WHITE);
 
