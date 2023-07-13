@@ -29,7 +29,7 @@ namespace draw
             return 1.0 - fpart(x);
         }
 
-        void line(gl::Framebuffer &fb, gl::Pixel &p0, gl::Pixel &p1)
+        void line(gl::Framebuffer &fb, const gl::Pixel &p0, const gl::Pixel &p1)
         {
             double x0 = p0.x;
             double y0 = p0.y;
@@ -56,7 +56,6 @@ namespace draw
             double gradient;
             if (dx == 0.0)
             {
-                std::cout << "dx == 0" << std::endl;
                 gradient = 1.0;
             }
             else

@@ -26,20 +26,17 @@ int main(int argc, char *argv[])
 
 void render()
 {
+    // buffer declaration
     const int WIDTH = 800;
     const int HEIGHT = 600;
+    gl::Framebuffer fb(WIDTH, HEIGHT);
 
+    // colors declaration
     gl::Color WHITE(255, 255, 255);
     gl::Color BLACK(0, 0, 0);
     gl::Color PINK(255, 0, 255);
 
-    gl::Framebuffer fb(WIDTH, HEIGHT);
-
-    fb.setClearColor(BLACK);
-    fb.clear();
-
-    fb.setCurrentColor(WHITE);
-
+    // polygon declaration
     std::vector<gl::Pixel> poly_0 = {
         gl::Pixel(165, 380),
         gl::Pixel(185, 360),
@@ -89,6 +86,10 @@ void render()
         gl::Pixel(735, 148),
         gl::Pixel(739, 170)};
 
+    // drawing commands
+    fb.setClearColor(BLACK);
+    fb.clear();
+
     fb.setCurrentColor(PINK);
     draw::fillPolygon(fb, poly_0);
     draw::fillPolygon(fb, poly_1);
@@ -105,7 +106,11 @@ void render()
     fb.setCurrentColor(BLACK);
     draw::fillPolygon(fb, poly_4);
 
-    // draw::polygon(fb, poly_2, WHITE);
+    gl::Pixel p0(0, 0);
+    gl::Pixel p1(799, 599);
+
+    draw::line(fb, p0, p0);
+    // ex:
 
     fb.renderBuffer();
 }
