@@ -36,74 +36,28 @@ void render()
     gl::Color PINK(255, 0, 255);
 
     // polygon declaration
-    std::vector<gl::Pixel> poly_0 = {
-        gl::Pixel(165, 380),
-        gl::Pixel(185, 360),
-        gl::Pixel(180, 330),
-        gl::Pixel(207, 345),
-        gl::Pixel(233, 330),
-        gl::Pixel(230, 360),
-        gl::Pixel(250, 380),
-        gl::Pixel(220, 385),
-        gl::Pixel(205, 410),
-        gl::Pixel(193, 383)};
-
-    std::vector<gl::Pixel> poly_1 = {
-        gl::Pixel(321, 335),
-        gl::Pixel(288, 286),
-        gl::Pixel(339, 251),
-        gl::Pixel(374, 302)};
-
-    std::vector<gl::Pixel> poly_2 = {
-        gl::Pixel(377, 249),
-        gl::Pixel(411, 197),
-        gl::Pixel(436, 249)};
-
-    std::vector<gl::Pixel> poly_3 = {
-        gl::Pixel(413, 177),
-        gl::Pixel(448, 159),
-        gl::Pixel(502, 88),
-        gl::Pixel(553, 53),
-        gl::Pixel(535, 36),
-        gl::Pixel(676, 37),
-        gl::Pixel(660, 52),
-        gl::Pixel(750, 145),
-        gl::Pixel(761, 179),
-        gl::Pixel(672, 192),
-        gl::Pixel(659, 214),
-        gl::Pixel(615, 214),
-        gl::Pixel(632, 230),
-        gl::Pixel(580, 230),
-        gl::Pixel(597, 215),
-        gl::Pixel(552, 214),
-        gl::Pixel(517, 144),
-        gl::Pixel(466, 180)};
-
-    std::vector<gl::Pixel> poly_4 = {
-        gl::Pixel(682, 175),
-        gl::Pixel(708, 120),
-        gl::Pixel(735, 148),
-        gl::Pixel(739, 170)};
+    std::vector<gl::Pixel> star = {
+        gl::Pixel(400, 100), // Point 1
+        gl::Pixel(475, 225), // Point 2
+        gl::Pixel(750, 275), // Point 3
+        gl::Pixel(525, 375), // Point 4
+        gl::Pixel(600, 600), // Point 5
+        gl::Pixel(400, 475), // Point 6
+        gl::Pixel(200, 600), // Point 7
+        gl::Pixel(275, 375), // Point 8
+        gl::Pixel(50, 275),  // Point 9
+        gl::Pixel(325, 225)  // Point 10
+    };
 
     // drawing commands
     fb.setClearColor(BLACK);
     fb.clear();
 
     fb.setCurrentColor(PINK);
-    draw::fillPolygon(fb, poly_0);
-    draw::fillPolygon(fb, poly_1);
-    draw::fillPolygon(fb, poly_2);
-    draw::fillPolygon(fb, poly_3);
+    draw::fillPolygon(fb, star);
 
     fb.setCurrentColor(WHITE);
-    draw::polygon(fb, poly_0);
-    draw::polygon(fb, poly_1);
-    draw::polygon(fb, poly_2);
-    draw::polygon(fb, poly_3);
-    draw::polygon(fb, poly_4);
-
-    fb.setCurrentColor(BLACK);
-    draw::fillPolygon(fb, poly_4);
+    draw::polygon(fb, star);
 
     fb.renderBuffer();
 }
