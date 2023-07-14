@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
         // report version
         std::cout << argv[0] << " Version " << Rasterizer_VERSION_MAJOR << "."
                   << Rasterizer_VERSION_MINOR << std::endl;
-        std::cout << "Usage: " << argv[0] << " number" << std::endl;
         return 1;
     }
 
@@ -105,12 +104,6 @@ void render()
 
     fb.setCurrentColor(BLACK);
     draw::fillPolygon(fb, poly_4);
-
-    gl::Pixel p0(0, 0);
-    gl::Pixel p1(799, 599);
-
-    draw::line(fb, p0, p0);
-    // ex:
 
     fb.renderBuffer();
 }
