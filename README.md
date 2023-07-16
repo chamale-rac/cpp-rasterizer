@@ -13,7 +13,7 @@ cmake ../
 ``` bash
 cmake --build .
 ```
-Then run de executable inside the build dir.E
+Then run de executable inside the build dir.
 This program rasterize .obj files into BMP files. By the moment just some features are line drawing, polygons outline and fill.
 
 ## 📝 Contributing
