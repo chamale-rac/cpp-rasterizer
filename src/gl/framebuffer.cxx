@@ -32,7 +32,8 @@ namespace framebuffer
             // data[(height - p.y) * width + p.x] = (data[(height - p.y) * width + p.x] + currentColor) * brightness;
             // TODO consider to return to just currentColor * brightness
             // TODO consider check the case the brightness is 0.0, also the case when the clearColor is equal to the background.
-            data[(height - p.y) * width + p.x] = currentColor * brightness;
+            // data[(height - p.y) * width + p.x] = currentColor * brightness;
+            data[p.y * width + p.x] = currentColor * brightness;
         }
     }
 
@@ -47,9 +48,9 @@ namespace framebuffer
         return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height; // Check if the pixel is inside the framebuffer
     }
 
-    void Framebuffer::renderBuffer() const
+    void Framebuffer::renderBuffer(const std::string fileName) const
     {
-        std::ofstream out("out.bmp", std::ios::binary);
+        std::ofstream out(fileName, std::ios::binary);
 
         // BMP header
         uint16_t fileType = 0x4D42;

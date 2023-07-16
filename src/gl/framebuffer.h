@@ -5,6 +5,7 @@
 #include "color.h"
 #include "pixel.h"
 #include <vector>
+#include <string>
 
 namespace framebuffer
 {
@@ -17,7 +18,7 @@ namespace framebuffer
         color::Color getPixel(const pixel::Pixel &p) const;
         void setPixel(const pixel::Pixel &p, const double brightness);
         void clear();
-        void renderBuffer() const;
+        void renderBuffer(const std::string fileName) const;
 
         void setClearColor(const color::Color &cc) { clearColor = cc; }
         void setCurrentColor(const color::Color &cc) { currentColor = cc; }
