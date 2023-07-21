@@ -24,7 +24,8 @@ void render()
     // buffer configuration
     const int WIDTH = 450;
     const int HEIGHT = 450;
-    gl::Framebuffer fb(WIDTH, HEIGHT);
+    const bool REVERSE_Y = false;
+    gl::Framebuffer fb(WIDTH, HEIGHT, REVERSE_Y);
 
     // colors declaration
     gl::Color WHITE(248, 247, 252);
@@ -127,9 +128,10 @@ void fillAnyPolygon()
     /* DRAW FOR 'Lab 1: Filling any Polygon' */
 
     // buffer configuration
-    const int WIDTH = 1080;
-    const int HEIGHT = 1080;
-    gl::Framebuffer fb(WIDTH, HEIGHT);
+    const int WIDTH = 950;
+    const int HEIGHT = 450;
+    const bool REVERSE_Y = true;
+    gl::Framebuffer fb(WIDTH, HEIGHT, REVERSE_Y);
 
     // colors declaration
     // color palette: https://colorhunt.co/palette/331d2c3f2e3ea78295efe1d1
@@ -137,7 +139,8 @@ void fillAnyPolygon()
     gl::Color HEX_3F2E3E(63, 46, 62);
     gl::Color HEX_A78295(167, 130, 149);
     gl::Color HEX_EFE1D1(239, 225, 209);
-    gl::Color HEX_313638(48, 51, 56); // black alternative
+    gl::Color HEX_313638(48, 51, 56);    // black alternative
+    gl::Color HEX_F8F7FC(248, 247, 252); // white alternative
 
     // polygon declaration
     std::vector<gl::Pixel>
@@ -196,23 +199,16 @@ void fillAnyPolygon()
 
     fb.setCurrentColor(HEX_331D2C);
     draw::fillPolygon(fb, POLYGON1);
-    draw::polygon(fb, POLYGON1);
-
-    fb.setCurrentColor(HEX_3F2E3E);
-    draw::fillPolygon(fb, POLYGON2);
-    draw::polygon(fb, POLYGON2);
 
     fb.setCurrentColor(HEX_A78295);
     draw::fillPolygon(fb, POLYGON3);
-    draw::polygon(fb, POLYGON3);
 
     fb.setCurrentColor(HEX_EFE1D1);
+    draw::fillPolygon(fb, POLYGON2);
     draw::fillPolygon(fb, POLYGON4);
-    draw::polygon(fb, POLYGON4);
 
-    fb.setCurrentColor(HEX_331D2C);
+    fb.setCurrentColor(HEX_313638);
     draw::fillPolygon(fb, POLYGON5);
-    draw::polygon(fb, POLYGON5);
 
     std::string fileName = "fillAnyPolygon.bmp";
     fb.renderBuffer(fileName);

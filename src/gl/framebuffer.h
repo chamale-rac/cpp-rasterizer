@@ -12,7 +12,7 @@ namespace framebuffer
     class Framebuffer
     {
     public:
-        Framebuffer(int width, int height);
+        Framebuffer(int width, int height, bool reverseY);
         int getWidth() const;
         int getHeight() const;
         color::Color getPixel(const pixel::Pixel &p) const;
@@ -26,6 +26,7 @@ namespace framebuffer
         const color::Color &getCurrentColor() const { return currentColor; }
 
     private:
+        bool reverseY;
         int width, height;
         color::Color clearColor;
         color::Color currentColor;

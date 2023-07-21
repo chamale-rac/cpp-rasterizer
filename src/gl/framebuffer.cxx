@@ -8,8 +8,8 @@
 
 namespace framebuffer
 {
-    Framebuffer::Framebuffer(int width, int height)
-        : width(width), height(height), data(width * height, clearColor) {}
+    Framebuffer::Framebuffer(int width, int height, bool reverseY)
+        : width(width), height(height), data(width * height, clearColor), reverseY(reverseY) {}
     // |2| how the hell data is initialized with clearColor?
 
     int Framebuffer::getWidth() const { return width; }
@@ -33,7 +33,10 @@ namespace framebuffer
             // TODO consider to return to just currentColor * brightness
             // TODO consider check the case the brightness is 0.0, also the case when the clearColor is equal to the background.
             // data[(height - p.y) * width + p.x] = currentColor * brightness;
-            data[p.y * width + p.x] = currentColor * brightness;
+            if (reverseY)
+                data[(height - p.y) * width + p.x] = currentColor * brightness;
+            else
+                data[p.y * width + p.x] = currentColor * brightness;
         }
     }
 
