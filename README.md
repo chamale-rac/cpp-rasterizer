@@ -28,3 +28,6 @@ If you have any questions or comments about py-rasterizer, please feel free to r
 
 ![fillAnyPolygon](https://github.com/chamale-rac/cpp-rasterizer/assets/63200593/44321674-2ed8-4d61-aa3c-54ce4afc3932)
 > **DRAW FOR 'Lab 1: Filling any Polygon'** ⬆
+
+![fillAnyPolygonOutline](https://github.com/chamale-rac/cpp-rasterizer/assets/63200593/c8d8df42-5204-4c39-af26-008259845b6b)
+> **DRAW FOR 'Lab 1: Filling any Polygon' - WITH OUTLINE** ⬆
