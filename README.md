@@ -1,7 +1,7 @@
 # 🦾 cpp-rasterizer 🖼️
 Welcome to the cpp-rasterizer repository! This C++-based implementation is a powerful tool for rasterizing BMP files.
 
-🚀 Getting Started
+## 🚀 Getting Started
 To get started with cpp-rasterizer, first clone this repository to your local machine. Then, make sure you have a C++ compiler installed and use cpp-rasterizer by building and running the executable file. You can build the executable using your preferred build system or by using the provided Makefile. Once built, run the executable with the appropriate arguments to rasterize BMP files.
 
 ``` bash
