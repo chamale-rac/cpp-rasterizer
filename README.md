@@ -24,4 +24,7 @@ If you have any questions or comments about py-rasterizer, please feel free to r
 
 ## 🎭 Show off
 ![first](https://github.com/chamale-rac/py-rasterizer/assets/63200593/fe74002a-acc0-411e-903b-94466fe28279)
+> PERSONAL DRAW FOR REPO SHOW OFF ⬆
 
+![fillAnyPolygon](https://github.com/chamale-rac/cpp-rasterizer/assets/63200593/44321674-2ed8-4d61-aa3c-54ce4afc3932)
+> **DRAW FOR 'Lab 1: Filling any Polygon'** ⬆
