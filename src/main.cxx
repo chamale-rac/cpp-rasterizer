@@ -8,12 +8,13 @@
 #include "draw.h"
 
 void render();
-void fillAnyPolygon();
+void fillAnyPolygon(bool outline);
 
 int main(int argc, char *argv[])
 {
     render();
-    fillAnyPolygon();
+    fillAnyPolygon(false);
+    fillAnyPolygon(true);
     return 0;
 }
 
@@ -123,7 +124,7 @@ void render()
     std::cout << "File " << fileName << " created." << std::endl;
 }
 
-void fillAnyPolygon()
+void fillAnyPolygon(bool outline)
 {
     /* DRAW FOR 'Lab 1: Filling any Polygon' */
 
@@ -141,6 +142,7 @@ void fillAnyPolygon()
     gl::Color HEX_EFE1D1(239, 225, 209);
     gl::Color HEX_313638(48, 51, 56);    // black alternative
     gl::Color HEX_F8F7FC(248, 247, 252); // white alternative
+    gl::Color PURE_BLACK(0, 0, 0);
 
     // polygon declaration
     std::vector<gl::Pixel>
@@ -210,7 +212,19 @@ void fillAnyPolygon()
     fb.setCurrentColor(HEX_313638);
     draw::fillPolygon(fb, POLYGON5);
 
+    if (outline)
+    {
+        fb.setCurrentColor(PURE_BLACK);
+        draw::polygon(fb, POLYGON1);
+        draw::polygon(fb, POLYGON2);
+        draw::polygon(fb, POLYGON3);
+        draw::polygon(fb, POLYGON4);
+        draw::polygon(fb, POLYGON5);
+    }
+
     std::string fileName = "fillAnyPolygon.bmp";
+    if (outline)
+        fileName = "fillAnyPolygonOutline.bmp";
     fb.renderBuffer(fileName);
 
     std::cout << "File " << fileName << " created." << std::endl;
