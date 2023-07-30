@@ -54,7 +54,7 @@ namespace framebuffer
     void Framebuffer::renderBuffer(const std::string fileName) const
     {
         // TODO: consider use the precise path to the main folder, not the relative path. Maybe some CMAKE variable
-        std::string path = "../" + fileName;
+        std::string path = "../images" + fileName;
         std::ofstream out(path, std::ios::binary);
 
         // BMP header
